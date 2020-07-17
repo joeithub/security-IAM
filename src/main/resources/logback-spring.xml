@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+    <contextName>logback - security</contextName>
+<!--    <property name="LOG_PATH" value="/usr/local/security"></property>-->
+    <property name="LOG_PATH" value="/Users/tongqiao/Downloads/security"></property>
+
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <FileNamePattern>${LOG_PATH}/temp/security/security.%d{yyyyMMdd}-%i.log</FileNamePattern>
+            <MaxHistory>180</MaxHistory>
+            <maxFileSize>200MB</maxFileSize>
+        </rollingPolicy>
+
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="adminUserLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <FileNamePattern>${LOG_PATH}/es/admin-user/user.%d{yyyyMMdd}-%i.log</FileNamePattern>
+            <MaxHistory>180</MaxHistory>
+            <maxFileSize>200MB</maxFileSize>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!--<appender name="clientUserLog" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+        <!--<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">-->
+            <!--<FileNamePattern>${LOG_PATH}/es/client-user/user.%d{yyyyMMdd}-%i.log</FileNamePattern>-->
+            <!--<MaxHistory>180</MaxHistory>-->
+            <!--<maxFileSize>200MB</maxFileSize>-->
+        <!--</rollingPolicy>-->
+        <!--<encoder>-->
+            <!--<pattern>%msg%n</pattern>-->
+        <!--</encoder>-->
+    <!--</appender>-->
+
+    <root level="INFO">
+        <appender-ref ref="console"/>
+        <appender-ref ref="file"/>
+    </root>
+
+    <!--<logger name="cn.enlink.ensbrain.user.action"/>-->
+    <!--<logger name="cn.enlink.ensbrain.core.basedao"/>-->
+    <!--<logger name="cn.enlink.ensbrain.core.DetailsService"/>-->
+    <logger name="com.security.controller"/>
+    <logger name="com.security.model"/>
+    <logger name="com.security.DetailsService"/>
+
+    <logger name="cn.enlink.ensbrain.admin.action.UserLogAction">
+        <appender-ref ref="adminUserLog"/>
+    </logger>
+    <!--<logger name="cn.enlink.ensbrain.client.action.UserLogAction">-->
+        <!--<appender-ref ref="clientUserLog"/>-->
+    <!--</logger>-->
+</configuration>

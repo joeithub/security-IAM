@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<title>登录</title>
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+
+	<link href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="//res.layui.com/layui/dist/css/layui.css?t=1545041465480" media="all">
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.14.0/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="https://cdn.bootcss.com/layer/3.1.0/layer.js"></script>
+
+
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+
+<body>
+
+	<div class="limiter">
+		<div class="container-login100" style="background-image: url('images/bg-01.jpg');">
+				<div style="width: 60%;height: 520px;float: left;">
+				</div>
+				<div class="wrap-login100 p-l-55 p-r-55 p-t-50 p-b-54">
+				<div id="myTabContent" class="tab-content">
+					<div class="tab-pane fade in active" id="userLogin">
+						<form class="login100-form " method="post" action="/login">
+							<span class="login100-form-title p-b-20">登录</span>
+
+							<div class="wrap-input100 validate-input " data-validate="请输入用户名">
+		<!--						<span class="label-input100">用户名</span>-->
+								<input class="input100 p-t-0" type="text" name="username" placeholder="账号/邮箱" autocomplete="off">
+								<span class="focus-input100" data-symbol="&#xf206;"></span>
+							</div>
+
+							<div class="wrap-input100 validate-input" data-validate="请输入密码">
+		<!--						<span class="label-input100">密码</span>-->
+								<input class="input100 p-t-0" type="password" name="password" placeholder="请输入密码">
+								<span class="focus-input100" data-symbol="&#xf190;"></span>
+							</div>
+
+							<div class="wrap-input100 validate-input" data-validate="请输入验证码" style="height: 45px">
+								<div >
+									<div class="validateCode">
+										<input class="input100" type="text"  name="verifyCode" required="required" placeholder="验证码">
+										<span class="focus-input100" data-symbol="&#xf191;"></span>
+									</div>
+									<div class="p-t-5">
+										<img style="line-height: 0.5;height: 30px;" src="getVerifyCode" title="看不清，请点我" onclick="refresh(this)" onmouseover="mouseover(this)" />
+									</div>
+								</div>
+								<br calss="clear"/>
+							</div>
+
+							<div style="height: 25px;" class="p-b-5">
+								<a href="javascript: ;" onclick="setChange(this)" class="tips" id="login_type"  data-toggle="tab">验证码登录</a>
+							</div>
+
+							<div class="remember-me p-t-5 p-b-0">
+								<label><input type="checkbox" name="remember-me"/>自动登录</label>
+							</div>
+							<div class="text-right p-t-8 p-b-10">
+								<a href="javascript: ;"  onclick="setChange(this)" id="forget1" data-toggle="tab" >忘记密码</a>
+							</div>
+
+							<div class="container-login100-form-btn">
+								<div class="wrap-login100-form-btn">
+									<div class="login100-form-bgbtn"></div>
+									<button class="login100-form-btn" type="submit">登 录</button>
+								</div>
+							</div>
+
+							<div class="txt1 text-center p-t-15 p-b-12">
+								<span>第三方登录</span>
+							</div>
+
+							<div class="flex-c-m">
+								<!--<a href="/login/oauth/wechat" class="login100-social-item bg1">-->
+								<a href="javascript:;"  onclick="setChange(this)" class="login100-social-item bg1" id="login_type4" data-toggle="tab">
+<!--								<a href="javascript: setChange(this)" onclick="setChange(this)" id="login_type4" class="login100-social-item bg1">-->
+								   <i class="fa fa-wechat"></i>
+								</a>
+
+								<!--						<a href="#" class="login100-social-item bg2">-->
+								<!--							<i class="fa fa-qq"></i>-->
+								<!--						</a>						-->
+								<!--<a href="/login/oauth/dingding" class="login100-social-item bg2">-->
+								<a href="javascript:;" onclick="setChange(this)" class="login100-social-item bg2" id="login_dd1"  data-toggle="tab">
+
+								<!--<i class="fa fa-github"></i>-->
+									<img style="width: 50px; height: 50px;" src="images/ding.jpg">
+									<!--<img style="width: 80px; height: 50px;" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1587457247169&di=7a59294ba08245219eec26028441c4a6&imgtype=0&src=http%3A%2F%2Fdownza.img.zz314.com%2Fedu%2Fandroid%2Fyyjc-1014%2F2016-09-28%2Fca1d8573348fbf4fffab121eebc59bd2.jpg">-->
+								</a>
+
+								<!--						<a href="#" class="login100-social-item bg3">-->
+								<!--							<i class="fa fa-weibo"></i>-->
+								<!--						</a>-->
+							</div>
+
+							<div class="flex-col-c p-t-20">
+								<a href="javascript:" class="txt2">立即注册</a>
+							</div>
+
+						</form>
+					</div>
+					<div class="tab-pane fade" id="codeLogin">
+						<form class="login100-form " method="POST" action="/login/basic/sms">
+							<span class="login100-form-title p-b-20">登录</span>
+
+							<div class="wrap-input100 validate-input " data-validate="请输入手机号">
+								<input id="mobile" class="input100 p-t-0" type="text" name="mobile" placeholder="手机号" autocomplete="off">
+								<span class="focus-input100" data-symbol="&#xf206;"></span>
+							</div>
+
+							<div class="wrap-input100 validate-input" data-validate="请输入验证码">
+								<div class="validateCode">
+									<input class="input100 p-t-0" type="text" name="smsCode" placeholder="请输入验证码">
+									<span class="focus-input100" data-symbol="&#xf190;"></span>
+								</div>
+								<div>
+									<button type="button" onclick="sendSms()" style="font-size: 14px;">获取验证码</button>
+								</div>
+								<br class="clear"/>
+							</div>
+
+							<div style="height: 25px;" class="p-b-5">
+								<a href="javascript: ;" onclick="setChange(this)" class="tips" id="login_type2"  data-toggle="tab">账号登录</a>
+							</div>
+
+							<div class="remember-me p-t-5 p-b-0">
+								<label><input type="checkbox" name="remember-me"/>自动登录</label>
+							</div>
+
+							<div class="text-right p-t-8 p-b-10">
+								<a href="javascript: ;"  onclick="setChange(this)" id="forget" data-toggle="tab" >忘记密码</a>
+							</div>
+
+							<div class="container-login100-form-btn">
+								<div class="wrap-login100-form-btn">
+									<div class="login100-form-bgbtn"></div>
+									<button class="login100-form-btn" type="submit">登 录</button>
+								</div>
+							</div>
+
+							<div class="txt1 text-center p-t-15 p-b-12">
+								<span>第三方登录</span>
+							</div>
+
+							<div class="flex-c-m">
+								<!--<a href="/login/oauth/wechat" class="login100-social-item bg1">-->
+								<a href="javascript: ;" onclick="setChange(this)" id="login_type3"  class="login100-social-item bg1"  data-toggle="tab">
+<!--								<a href="javascript: setChange(this)" onclick="setChange(this)" id="login_type3" class="login100-social-item bg1">-->
+									<i class="fa fa-wechat"></i>
+								</a>
+
+								<!--						<a href="#" class="login100-social-item bg2">-->
+								<!--							<i class="fa fa-qq"></i>-->
+								<!--						</a>						-->
+								<a href="javascript: ;" onclick="setChange(this)" id="login_dd" class="login100-social-item bg2" data-toggle="tab">
+									<img style="width: 50px; height: 50px;" src="images/ding.jpg">
+																<!--<i class="fa fa-digg"></i>-->
+									<!--<img src="http://localhost:8080/images/dingtalk.png" >-->
+								</a>
+
+								<!--						<a href="#" class="login100-social-item bg3">-->
+								<!--							<i class="fa fa-weibo"></i>-->
+								<!--						</a>-->
+							</div>
+
+							<div class="flex-col-c p-t-20">
+								<a href="javascript:" class="txt2">立即注册</a>
+							</div>
+						</form>
+					</div>
+					<div class="tab-pane fade" id="wechatLogin">
+						<div id="wxcode">
+						</div>
+						<a href="login.html">返回登录页</a>
+					</div>
+					<div class="tab-pane fade" id="dingdingLogin">
+						<div id="ddcode"></div>
+						<a href="login.html">返回登录页</a>
+					</div>
+					<div class="tab-pane fade" id="forgetPassWd">
+						<span class="login100-form-title p-b-20">忘记密码</span>
+
+						<div class="wrap-input100 validate-input" data-validate="请输入邮箱地址">
+							<div class="validateCode">
+								<input class="input100 p-t-0" id="email" type="text" name="email" placeholder="请输入邮箱地址">
+								<span class="focus-input100" data-symbol="&#xf190;"></span>
+							</div>
+							<div>
+								<button type="button" onclick="sendEmail()" style="font-size: 14px;">获取验证码</button>
+							</div>
+							<br class="clear"/>
+
+						</div>
+
+						<div>
+							<button type="button" onclick="next(this)">下一步</button>
+						</div>
+						<div>
+							<a href="login.html">返回登录页</a>
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+		<br class="clear"/>
+	</div>
+
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="js/main.js"></script>
+	<script type='text/javascript' src="https://res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin.js"></script>
+	<script src="http://g.alicdn.com/dingding/dinglogin/0.0.5/ddLogin.js"></script>
+	<script>
+		var obj = new WxLogin({
+			self_redirect: false,
+			id:"wxcode",
+			appid: "wx88c11280ae692d35",
+			scope: "snsapi_login",
+			redirect_uri: "https://support.enlink.com.cn:8443/api/user/callback/wechat",
+			state: "security",
+			style: "black",
+			// href: "http://localhost:8080/css/wechat.css"
+		});
+
+		var obj = DDLogin({
+			id:"ddcode",
+			goto: "https://oapi.dingtalk.com/connect/oauth2/sns_authorize?appid=dingoaojosmw3tgbm8a6wd&response_type=code&scope=snsapi_login&state=STATE&redirect_uri=REDIRECT_URI",
+			style: "border:none;background-color:#FFFFFF;",
+			width : "365",
+			height: "400"
+		});
+
+		function refresh(obj) { obj.src = "getVerifyCode?" + Math.random(); }
+
+		function mouseover(obj) { obj.style.cursor = "pointer"; }
+
+		var http = new XMLHttpRequest()
+
+		function sendSms() {
+			// window.location.href = '/sms/code/' + document.getElementById("mobile").value;
+			url =  '/login/code/sms/' + document.getElementById("mobile").value;
+			http.open("GET",url);
+			http.send();
+		}
+		function sendEmail() {
+			// window.location.href = '/sms/code/' + document.getElementById("mobile").value;
+			url =  '/login/code/email/' + document.getElementById("email").value;
+			http.open("GET",url);
+			http.send();
+		}
+
+		function setChange(obj) {
+			if ('login_type' == obj.id) {
+				$('#login_type').attr('href','#codeLogin');
+			}
+			if ('login_type2' == obj.id) {
+				$('#login_type2').attr('href','#userLogin');
+			}
+			if ('login_type3' == obj.id ){
+				$('#login_type3').attr('href','#wechatLogin');
+			} 
+			if ( 'login_type4' == obj.id ) {
+				$('#login_type4').attr('href','#wechatLogin');
+			}
+			if ('login_dd1' == obj.id ) {
+				$('#login_dd1').attr('href','#dingdingLogin');
+			}
+			if ('login_dd' == obj.id) {
+				$('#login_dd').attr('href','#dingdingLogin');
+			}
+			if ('forget1' == obj.id){
+				$('#forget1').attr('href','#forgetPassWd');
+			}
+			if ('forget' == obj.id) {
+				$('#forget').attr('href','#forgetPassWd');
+			}
+		}
+
+		function next(obj) {
+
+		}
+		// function setChange(obj){
+		// 	var text = $(obj).text();
+		// 	if(text=='验证码登录'){
+		// 		$('#login_type').attr('href','#codeLogin');
+		// 		// $(obj).text('账号登录');
+		// 	}
+		// 	if (text == "账号登录"){
+		// 		$('#login_type2').attr('href','#userLogin');
+		// 		// $(obj).text('验证码登录');
+		// 	}
+		// }
+	</script>
+</body>
+
+</html>
